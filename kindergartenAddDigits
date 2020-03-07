@@ -1,0 +1,26 @@
+# a simple game that teaches kindergartners how to add single-digit numbers. 
+
+import random 
+ 
+def checkAns(answer, cSum):
+  if(str(answer) == str(cSum)):
+    return True 
+  else: 
+    return False
+    
+a = random.randint(0,9)
+b = random.randint(0,9)
+c = a + b
+print("What does " + str(a) + " balls "+ " + " + str(b) + " balls " + " equals : ")
+for i in range(a): 
+  print("o", end =" ") 
+print("") 
+for i in range(b):
+  print("o", end =" ")
+print("\nHint: Count the number of balls: ") 
+ans = input("Enter your answer: ") 
+while(checkAns(ans, c) == False): 
+  print("Sorry! Try again!")
+  ans = input("Enter your answer: ")
+  if(checkAns(ans, c)): 
+    print("CORRECT") 
