@@ -1,0 +1,74 @@
+'''import numpy as np
+
+#a = np.array([[11,22,33],[44,55,66],[77,88,99]])
+a = np.array([[1,2,3],[4,5,6],[7,8,9]])
+
+#print((a[:,2])) #print third coloumn
+#print((a[2:,])) #print xthird row
+
+
+
+#print(np.mean(a, axis=0)) #axis 0 mean coloumn, axis 1 mean row
+print(a)
+
+#a_new = np.empty([3,1])
+a_new = []
+for i in range(len(a)):
+    a_new.append((sum(a[:,i]) - np.mean(a[:,i], axis=0)))
+    #np.append(a_new, (sum(a[:,i]) - np.mean(a[:,i], axis=0)), axis = 0)
+a_new = np.array(a_new)
+print(a_new)
+x = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+
+
+b = np.array([[1,2,3],[4,5,6],[7,8,9]])
+b_new = []
+print("NOW B")
+print(b)
+#print(np.mean(b[0:,0 ], axis=1))
+b_new = (((np.sum(b, axis=1)) - (np.mean(b, axis=1)))/(np.std(b, axis = 1)))
+b_new = np.array(b_new)
+#np.reshape(b_new, (3,1)) 
+b_new.transpose(1,0)
+#b_new.flatten()
+print(b_new)
+
+'''
+
+import numpy as np
+import copy
+
+a = np.array([[1,2,3],[4,5,6],[7,8,9]])
+
+print(a)
+
+a_new = []
+for i in range(len(a)):
+    a_new.append((sum(a[:,i]) - np.mean(a[:,i], axis=0)))
+
+a_new = np.array(a_new)
+print(a_new)
+
+
+b = np.array([[1,2,3],[4,5,6],[7,8,9]])
+b_row_sum = []
+print("NOW B")
+print(b)
+#print(np.mean(b[0:,0 ], axis=1))
+b_row_sum = (((np.sum(b, axis=1)) - (np.mean(b, axis=1)))/(np.std(b, axis = 1)))
+b_row_sum = np.array(b_row_sum)
+b_new = copy.deepcopy(b)
+for i in range(0, len(b)):
+    for j in range(0, len(b)):
+        b_new[i][j] = b[i][j] - b_row_sum[i]
+x = np.array([0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+
+y = b_new.flatten()
+print(b_row_sum)
+print(y)
+poly2deg = np.polyfit(x,y,2)
+poly3deg = np.polyfit(x,y,3)
+
+print(poly2deg)
+print(poly3deg)
+
